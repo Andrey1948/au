@@ -31,6 +31,8 @@ public class Group {
         student.setGroup(this);
     }
 
+
+
     public Integer getId() {
         return id;
     }
@@ -45,5 +47,13 @@ public class Group {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "number='" + number + '\'' +
+                ", id=" + id +
+                '}';
     }
 }

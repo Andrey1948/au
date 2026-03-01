@@ -1,5 +1,6 @@
 package com.example.andreuapp.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,10 @@ public class Student {
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;
 
+
+
+
+
     public Long getId() {
         return id;
     }
@@ -33,7 +38,6 @@ public class Student {
     public LocalDate getDateOfEnrollment() {
         return dateOfEnrollment;
     }
-
     public String getFullName() {
         return fullName;
     }
