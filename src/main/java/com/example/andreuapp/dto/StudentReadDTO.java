@@ -7,14 +7,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
-public class StudentReadDTO {
+public record StudentReadDTO(String fullName) {
 
-    
-    private String fullName;
+
+
 
 
 }

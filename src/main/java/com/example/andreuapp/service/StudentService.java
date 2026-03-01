@@ -1,5 +1,6 @@
 package com.example.andreuapp.service;
 
+import com.example.andreuapp.dto.StudentReadDTO;
 import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.entity.Student;
 import com.example.andreuapp.repository.GroupRepository;
@@ -41,6 +42,13 @@ public class StudentService {
         Group group = (Group) groupRepository.findByNumber(number).orElseThrow(NullPointerException::new);;
         student.setGroup(group);
         studentRepository.save(student);
+
+
+    }
+
+    @Transactional
+    public Optional <StudentReadDTO> updateStudentGroup2(Long id, String number) {
+
     }
 
 }
