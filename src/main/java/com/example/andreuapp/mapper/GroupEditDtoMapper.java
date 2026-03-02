@@ -2,8 +2,12 @@ package com.example.andreuapp.mapper;
 
 import com.example.andreuapp.dto.GroupEditDTO;
 import com.example.andreuapp.entity.Group;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-public class GroupDtoEditMapper {
+@Component
+@RequiredArgsConstructor
+public class GroupEditDtoMapper {
 
     public Group toGroup(GroupEditDTO groupEditDTO) {
         if(groupEditDTO == null) return null;

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 public class SuperheroController {
 
     @PostMapping()
-    public SuperheroCreateDto test(@RequestBody SuperheroCreateDto dto) {
+    public SuperheroCreateDto test(@RequestBody(required = false) SuperheroCreateDto dto) {
         System.out.println("---");
-        return dto;
+        return new SuperheroCreateDto();
     }
 }

@@ -1,6 +1,6 @@
 package com.example.andreuapp.mapper;
 
-public class StudentDtoMapper {
+public class StudentEditDtoMapper {
 
 
 

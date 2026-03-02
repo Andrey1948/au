@@ -9,12 +9,36 @@ import java.util.List;
 
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class GroupEditDTO {
 
     private Integer id;
     private String number;
-    private List<Student> students;
+
+
+    public GroupEditDTO(Integer id, String number) {
+        this.id = id;
+        this.number = number;
+    }
+
+    public GroupEditDTO() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 }
+
+
