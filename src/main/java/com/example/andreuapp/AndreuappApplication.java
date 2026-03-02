@@ -53,7 +53,7 @@ public class AndreuappApplication {
     public CommandLineRunner testQuery4(StudentService studentService, GroupRepository groupRepository) {
         return args -> {
             Long studentId = 2L;
-            String groupNumber = "20-02";
+            String groupNumber = "20-01";
             studentService.updateStudentGroup(studentId, groupNumber );
 
         };

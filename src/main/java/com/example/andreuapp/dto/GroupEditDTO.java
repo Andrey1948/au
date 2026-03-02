@@ -8,18 +8,12 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 
-@Data
-@Builder
+
 public class GroupEditDTO {
 
     private Integer id;
     private String number;
 
-
-    public GroupEditDTO(Integer id, String number) {
-        this.id = id;
-        this.number = number;
-    }
 
     public GroupEditDTO() {
     }

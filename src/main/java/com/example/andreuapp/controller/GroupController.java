@@ -5,25 +5,28 @@ import com.example.andreuapp.dto.SuperheroCreateDto;
 import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.service.GroupService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Controller("/v2")
+@RequestMapping("/v2")
 public class GroupController {
 
 
-    GroupService groupService;
+    private final GroupService groupService;
 
     public GroupController(GroupService groupService) {
         this.groupService = groupService;
     }
 
-    @PostMapping("/22")
+    @GetMapping("{id}")
+    public Group getGroupById(@PathVariable Integer id) {
+        return groupService.getGroupById(id);
+
+    }
+
+    @PostMapping("/s")
     public Group testSave(@RequestBody Group group) {
         groupService.save(group);
-        System.out.println("---");
         return group;
     }
 
@@ -35,6 +38,7 @@ public class GroupController {
 
     @PostMapping("/io")
     public GroupEditDTO ter(@RequestBody(required = false) GroupEditDTO groupEditDTO) {
+
         return new GroupEditDTO();
     }
 }

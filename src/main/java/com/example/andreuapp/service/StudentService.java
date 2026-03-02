@@ -34,6 +34,7 @@ public class StudentService {
         return studentRepository.findById(id);
     }
 
+    @Transactional
     public Student save(Student student) {
         return studentRepository.save(student);
     }

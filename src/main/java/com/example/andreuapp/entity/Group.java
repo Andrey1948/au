@@ -20,9 +20,8 @@ public class Group {
     @Column (nullable = false, unique = true)
     private String number;
 
-
-    @OneToMany (mappedBy = "group")
     @JsonIgnore
+    @OneToMany (mappedBy = "group")
     private List<Student> students;
 
     public void addStudentsToGroup(Student student) {
