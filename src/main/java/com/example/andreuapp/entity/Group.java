@@ -1,6 +1,7 @@
 package com.example.andreuapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,7 +21,7 @@ public class Group {
     @Column (nullable = false, unique = true)
     private String number;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany (mappedBy = "group")
     private List<Student> students;
 

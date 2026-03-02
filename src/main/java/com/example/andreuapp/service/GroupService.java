@@ -2,20 +2,23 @@ package com.example.andreuapp.service;
 
 import com.example.andreuapp.dto.GroupReadDTO;
 import com.example.andreuapp.entity.Group;
+
+import com.example.andreuapp.mapper.GroupReadDtoMapper;
 import com.example.andreuapp.repository.GroupRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GroupService {
 
-    private GroupRepository groupRepository;
+    private final GroupRepository groupRepository;
+    private final GroupReadDtoMapper groupReadDtoMapper;
 
-    public GroupService(GroupRepository groupRepository) {
+    public GroupService(GroupRepository groupRepository, GroupReadDtoMapper groupReadDtoMapper) {
         this.groupRepository = groupRepository;
+        this.groupReadDtoMapper = groupReadDtoMapper;
     }
 
     public List<Group> getGroups() {
@@ -25,9 +28,10 @@ public class GroupService {
     }
 
     @Transactional
-    public Group getGroupById(int id) {
-        return groupRepository.findById(id).orElseThrow(()-> new RuntimeException("Error"));
+    public GroupReadDTO getGroupById(Integer id) {
+        return groupRepository.findById(id).map(u-> groupReadDtoMapper.toDto(u)).orElseThrow();
     }
+
 
     @Transactional
     public Group save(Group group) {

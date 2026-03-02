@@ -7,8 +7,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Builder
-public record StudentReadDTO(String fullName) {
+public record StudentReadDTO(Long id, String fullName, LocalDate dateOfEnrollment) {
 
 
 

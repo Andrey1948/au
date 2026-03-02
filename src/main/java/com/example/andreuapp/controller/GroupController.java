@@ -1,6 +1,7 @@
 package com.example.andreuapp.controller;
 
 import com.example.andreuapp.dto.GroupEditDTO;
+import com.example.andreuapp.dto.GroupReadDTO;
 import com.example.andreuapp.dto.SuperheroCreateDto;
 import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.service.GroupService;
@@ -19,7 +20,7 @@ public class GroupController {
     }
 
     @GetMapping("{id}")
-    public Group getGroupById(@PathVariable Integer id) {
+    public GroupReadDTO getGroupById(@PathVariable Integer id) {
         return groupService.getGroupById(id);
 
     }

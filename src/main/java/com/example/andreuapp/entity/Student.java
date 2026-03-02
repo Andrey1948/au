@@ -1,6 +1,7 @@
 package com.example.andreuapp.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class Student {
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;

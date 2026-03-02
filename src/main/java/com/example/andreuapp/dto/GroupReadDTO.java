@@ -1,27 +1,34 @@
 package com.example.andreuapp.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Profile;
+import com.example.andreuapp.entity.Student;
+
+import java.util.List;
 
 
-@AllArgsConstructor
-@Builder
+
+
 public class GroupReadDTO {
 
-    private Long id;
+    private Integer id;
     private String number;
+    private List<StudentReadDTO> students;
 
-    public GroupReadDTO() {
+
+    public GroupReadDTO(Integer id, String number, List<StudentReadDTO> students) {
+        this.id = id;
+        this.number = number;
+        this.students = students;
+    }
+
+    public List<StudentReadDTO> getStudents() {
+        return students;
     }
 
     public String getNumber() {
         return number;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 }
