@@ -14,13 +14,15 @@ import java.util.Optional;
 
 
 @Service
-@RequiredArgsConstructor
 public class StudentService {
 
     private final StudentRepository studentRepository;
     private final GroupRepository groupRepository;
 
-
+    StudentService(StudentRepository studentRepository, GroupRepository groupRepository) {
+        this.studentRepository = studentRepository;
+        this.groupRepository = groupRepository;
+    }
 
 
     public List<Student> getStudents() {
@@ -43,13 +45,12 @@ public class StudentService {
         student.setGroup(group);
         studentRepository.save(student);
 
-
     }
 
-    @Transactional
-    public Optional <StudentReadDTO> updateStudentGroup2(Long id, String number) {
-
-    }
+//    @Transactional
+//    public Optional <StudentReadDTO> updateStudentGroup2(Long id, String number) {
+//
+//    }
 
 }
 

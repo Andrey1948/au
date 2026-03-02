@@ -14,6 +14,7 @@ public class SuperheroCreateDto {
     private List<MemberCreateDTO> members;
 
 
+
     public String getSquadName() {
         return squadName;
     }
@@ -62,11 +63,11 @@ public class SuperheroCreateDto {
         this.members = members;
     }
 
+
     public SuperheroCreateDto() {
 
+
     }
 
-    public SuperheroCreateDto(String squadName) {
-        this.squadName = squadName;
-    }
+
 }

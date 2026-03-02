@@ -1,6 +1,9 @@
 spring:
+  config:
+    activate:
+      on-profile: work
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/spring-data
+    url: jdbc:postgresql://localhost:5432/spring_data
     username: postgres
     password: postgres
