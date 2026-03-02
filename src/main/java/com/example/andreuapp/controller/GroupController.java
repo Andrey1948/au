@@ -1,5 +1,6 @@
 package com.example.andreuapp.controller;
 
+import com.example.andreuapp.dto.GroupEditDTO;
 import com.example.andreuapp.dto.SuperheroCreateDto;
 import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.service.GroupService;
@@ -30,6 +31,13 @@ public class GroupController {
     public Group testSave2(@RequestBody(required = false) Group group) {
         return new Group();
     }
+
+
+    @PostMapping("/io")
+    public GroupEditDTO ter(@RequestBody(required = false) GroupEditDTO groupEditDTO) {
+        return new GroupEditDTO();
+    }
 }
+
 
 

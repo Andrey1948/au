@@ -1,5 +1,6 @@
 package com.example.andreuapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Group {
 
 
     @OneToMany (mappedBy = "group")
+    @JsonIgnore
     private List<Student> students;
 
     public void addStudentsToGroup(Student student) {
@@ -47,6 +49,14 @@ public class Group {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     @Override
