@@ -24,7 +24,7 @@ public class Student {
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @JsonBackReference
+
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;

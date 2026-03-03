@@ -5,18 +5,21 @@ import com.example.andreuapp.dto.GroupReadDTO;
 import com.example.andreuapp.dto.SuperheroCreateDto;
 import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.service.GroupService;
+import com.example.andreuapp.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v2")
+@RequestMapping("/g")
 public class GroupController {
 
 
     private final GroupService groupService;
+    private final StudentService studentService;
 
-    public GroupController(GroupService groupService) {
+    public GroupController(GroupService groupService, StudentService studentService) {
         this.groupService = groupService;
+        this.studentService = studentService;
     }
 
     @GetMapping("{id}")

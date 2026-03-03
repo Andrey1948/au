@@ -1,5 +1,6 @@
 package com.example.andreuapp.service;
 
+import com.example.andreuapp.dto.GroupCountDto;
 import com.example.andreuapp.dto.StudentReadDTO;
 import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.entity.Student;
@@ -47,6 +48,12 @@ public class StudentService {
         studentRepository.save(student);
 
     }
+
+    @Transactional
+    public List<GroupCountDto> countStudentByGroupName(){
+        return studentRepository.countStudentByGroupName();
+        }
+
 
 //    @Transactional
 //    public Optional <StudentReadDTO> updateStudentGroup2(Long id, String number) {

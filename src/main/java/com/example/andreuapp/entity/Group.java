@@ -21,7 +21,7 @@ public class Group {
     @Column (nullable = false, unique = true)
     private String number;
 
-    @JsonManagedReference
+
     @OneToMany (mappedBy = "group")
     private List<Student> students;
 

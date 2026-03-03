@@ -1,5 +1,6 @@
 package com.example.andreuapp.service;
 
+import com.example.andreuapp.dto.GroupCountDto;
 import com.example.andreuapp.dto.GroupReadDTO;
 import com.example.andreuapp.entity.Group;
 
@@ -38,11 +39,8 @@ public class GroupService {
         return groupRepository.save(group);
     }
 
-//       public GroupEd
 
-//    public Integer getCOuntStudentByGroup(Group group) {
-//       return groupRepository.countStudentByGroup(group);
-//    }
+
 
 }
 
