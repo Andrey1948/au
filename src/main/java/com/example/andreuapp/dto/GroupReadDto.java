@@ -1,26 +1,24 @@
 package com.example.andreuapp.dto;
 
-import com.example.andreuapp.entity.Student;
-
 import java.util.List;
 
 
 
 
-public class GroupReadDTO {
+public class GroupReadDto {
 
     private Integer id;
     private String number;
-    private List<StudentReadDTO> students;
+    private List<StudentReadDto> students;
 
 
-    public GroupReadDTO(Integer id, String number, List<StudentReadDTO> students) {
+    public GroupReadDto(Integer id, String number, List<StudentReadDto> students) {
         this.id = id;
         this.number = number;
         this.students = students;
     }
 
-    public List<StudentReadDTO> getStudents() {
+    public List<StudentReadDto> getStudents() {
         return students;
     }
 

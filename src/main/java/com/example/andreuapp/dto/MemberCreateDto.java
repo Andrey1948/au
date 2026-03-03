@@ -1,17 +1,15 @@
 package com.example.andreuapp.dto;
 
-import lombok.Data;
-
 import java.util.List;
 
 
-public class MemberCreateDTO {
+public class MemberCreateDto {
     private String name;
     private int age;
     private String secretIdentity;
     List<String> powers;
 
-    public MemberCreateDTO() {
+    public MemberCreateDto() {
     }
 
     public String getName() {

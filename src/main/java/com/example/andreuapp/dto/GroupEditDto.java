@@ -1,21 +1,13 @@
 package com.example.andreuapp.dto;
 
-import com.example.andreuapp.entity.Student;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import java.util.List;
 
-
-
-public class GroupEditDTO {
+public class GroupEditDto {
 
     private Integer id;
     private String number;
 
 
-    public GroupEditDTO() {
+    public GroupEditDto() {
     }
 
     public Integer getId() {

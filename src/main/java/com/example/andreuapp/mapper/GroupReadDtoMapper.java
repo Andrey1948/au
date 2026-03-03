@@ -1,9 +1,8 @@
 package com.example.andreuapp.mapper;
 
-import com.example.andreuapp.dto.GroupReadDTO;
-import com.example.andreuapp.dto.StudentReadDTO;
+import com.example.andreuapp.dto.GroupReadDto;
+import com.example.andreuapp.dto.StudentReadDto;
 import com.example.andreuapp.entity.Group;
-import com.example.andreuapp.entity.Student;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -11,14 +10,14 @@ import java.util.List;
 @Component
 public class GroupReadDtoMapper {
 
-    public GroupReadDTO toDto(Group group) {
+    public GroupReadDto toDto(Group group) {
         if (group == null) {
             return null;
         }
-        List<StudentReadDTO> studentDto = group.getStudents().stream()
-                .map(s -> new StudentReadDTO(s.getId(), s.getFullName(), s.getDateOfEnrollment()))
+        List<StudentReadDto> studentDto = group.getStudents().stream()
+                .map(s -> new StudentReadDto(s.getId(), s.getFullName(), s.getDateOfEnrollment()))
                 .toList();
-        GroupReadDTO groupReadDTO = new GroupReadDTO(
+        GroupReadDto groupReadDTO = new GroupReadDto(
                 group.getId(), group.getNumber(), studentDto);
         return groupReadDTO;
 

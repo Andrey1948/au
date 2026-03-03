@@ -12,7 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
-    List<Student> id(Long id);
 
     Optional<Student> findByFullName(String fullName);
 

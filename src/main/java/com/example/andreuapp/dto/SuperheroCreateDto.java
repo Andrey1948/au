@@ -11,7 +11,7 @@ public class SuperheroCreateDto {
     private Year formed;
     private String secretBase;
     private boolean active;
-    private List<MemberCreateDTO> members;
+    private List<MemberCreateDto> members;
 
 
 
@@ -55,11 +55,11 @@ public class SuperheroCreateDto {
         this.active = active;
     }
 
-    public List<MemberCreateDTO> getMembers() {
+    public List<MemberCreateDto> getMembers() {
         return members;
     }
 
-    public void setMembers(List<MemberCreateDTO> members) {
+    public void setMembers(List<MemberCreateDto> members) {
         this.members = members;
     }
 

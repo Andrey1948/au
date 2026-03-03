@@ -2,16 +2,16 @@ package com.example.andreuapp.controller;
 
 
 import com.example.andreuapp.dto.GroupCountDto;
+import com.example.andreuapp.dto.StudentReadDto;
+import com.example.andreuapp.dto.StudentUpdateGroupDto;
 import com.example.andreuapp.service.GroupService;
 import com.example.andreuapp.service.StudentService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/s")
+@RequestMapping("/v2/students")
 public class StudentController {
 
     private final GroupService groupService;
@@ -22,8 +22,15 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping("/z")
+    @GetMapping("/countStudents")
     List<GroupCountDto> countStudentByGroupName() {
        return studentService.countStudentByGroupName();
     }
+
+    @PostMapping
+    public StudentReadDto updateGroupStudent(@RequestBody StudentUpdateGroupDto studentUpdateGroupDto) {
+        return studentService.updateStudentGroup(studentUpdateGroupDto);
+    }
+
+
 }

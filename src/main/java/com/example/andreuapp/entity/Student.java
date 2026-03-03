@@ -30,9 +30,6 @@ public class Student {
     private Group group;
 
 
-
-
-
     public Long getId() {
         return id;
     }

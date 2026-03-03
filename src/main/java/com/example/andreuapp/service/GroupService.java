@@ -1,7 +1,6 @@
 package com.example.andreuapp.service;
 
-import com.example.andreuapp.dto.GroupCountDto;
-import com.example.andreuapp.dto.GroupReadDTO;
+import com.example.andreuapp.dto.GroupReadDto;
 import com.example.andreuapp.entity.Group;
 
 import com.example.andreuapp.mapper.GroupReadDtoMapper;
@@ -29,7 +28,7 @@ public class GroupService {
     }
 
     @Transactional
-    public GroupReadDTO getGroupById(Integer id) {
+    public GroupReadDto getGroupById(Integer id) {
         return groupRepository.findById(id).map(u-> groupReadDtoMapper.toDto(u)).orElseThrow();
     }
 

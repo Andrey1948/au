@@ -15,7 +15,7 @@ public interface GroupRepository extends JpaRepository<Group, Integer> {
     public Group findByNumberFromQuery(String number);
 
 
-    Optional<Object> findByNumber(String number);
+    Optional<Group> findByNumber(String number);
 
     Optional<Group> findById(Integer id);
 }
