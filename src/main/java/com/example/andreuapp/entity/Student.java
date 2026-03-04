@@ -30,21 +30,25 @@ public class Student {
     private Group group;
 
 
-    public Long getId() {
-        return id;
-    }
-
     public LocalDate getDateOfEnrollment() {
         return dateOfEnrollment;
     }
+
     public String getFullName() {
         return fullName;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Group getGroup() {
         return group;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public void setDateOfEnrollment(LocalDate dateOfEnrollment) {
         this.dateOfEnrollment = dateOfEnrollment;
     }

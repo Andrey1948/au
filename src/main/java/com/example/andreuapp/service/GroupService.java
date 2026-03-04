@@ -7,6 +7,7 @@ import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.mapper.GroupEditDtoMapper;
 import com.example.andreuapp.mapper.GroupReadDtoMapper;
 import com.example.andreuapp.repository.GroupRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,12 +27,16 @@ public class GroupService {
         this.groupEditDtoMapper = groupEditDtoMapper;
     }
 
-    public List<Group> getGroups() {
-        System.out.println(groupRepository.findAll());
+
+    public List<GroupReadDto> gettAllGrouos(){
+        return groupRepository.findAll().forEach(s->groupReadDtoMapper.toDd );
+    }
+
+
+    public List<Group> getAllGroups() {
         return groupRepository.findAll();
 
     }
-
 
     public GroupReadDto getGroupById(Integer id) {
         return groupRepository.findById(id).map(u -> groupReadDtoMapper.toDto(u)).orElseThrow();
@@ -39,16 +44,15 @@ public class GroupService {
 
 
     @Transactional
-    public GroupReadDto save(GroupReadDto GroupReadDto) {
-        Group p = groupEditDtoMapper.toGroup(groupEditDto);
-        groupRepository.save(p);
-        return groupEditDtoMapper.toGroupEditDTO()
-
+    public GroupReadDto save(GroupEditDto groupEditDto) {
+        Group group = groupEditDtoMapper.toGroup(groupEditDto);
+        Group saveGroup = groupRepository.save(group);
+        return groupReadDtoMapper.toDto(saveGroup);
     }
 
 
 
-    public boolean delete(GroupEditDto ged) {
+    public boolean delete(Integer id) {
         if (!(id == null)) {
             groupRepository.findById(id).map(
                     u -> {

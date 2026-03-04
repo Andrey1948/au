@@ -33,6 +33,7 @@ public class GroupReadDtoMapper {
         if (dto.getStudents() != null) { List<Student> students = dto.getStudents().stream()
                     .map(sDto -> {
                         Student student = new Student();
+                        student.setId(sDto.id());
                         student.setFullName(sDto.fullName());
                         student.setDateOfEnrollment(sDto.dateOfEnrollment());
                         student.setGroup(group);
@@ -45,4 +46,4 @@ public class GroupReadDtoMapper {
     }
 }
 
-}
+

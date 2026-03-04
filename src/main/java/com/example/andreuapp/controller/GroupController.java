@@ -7,6 +7,8 @@ import com.example.andreuapp.service.GroupService;
 import com.example.andreuapp.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v2/groups")
 public class GroupController {
@@ -19,6 +21,11 @@ public class GroupController {
         this.studentService = studentService;
     }
 
+    @GetMapping("all")
+    public List<Group> getAllGroups (){
+        return groupService.getAllGroups();
+    }
+
     @GetMapping("{id}")
     public GroupReadDto getGroupById(@PathVariable Integer id) {
         return groupService.getGroupById(id);
@@ -27,8 +34,7 @@ public class GroupController {
 
     @PostMapping()
     public GroupReadDto save(@RequestBody GroupEditDto groupEditDto) {
-        groupService.save(groupEditDto);
-        return groupEditDto;
+        return groupService.save(groupEditDto);
     }
 
     @GetMapping("/{id}/delete")
