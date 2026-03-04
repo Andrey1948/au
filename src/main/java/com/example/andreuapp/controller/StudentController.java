@@ -22,7 +22,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/countStudents")
+    @GetMapping("/quantity")
     List<GroupCountDto> countStudentByGroupName() {
        return studentService.countStudentByGroupName();
     }
@@ -30,6 +30,11 @@ public class StudentController {
     @PostMapping
     public StudentReadDto updateGroupStudent(@RequestBody StudentUpdateGroupDto studentUpdateGroupDto) {
         return studentService.updateStudentGroup(studentUpdateGroupDto);
+    }
+
+    @GetMapping("/{id}/delete")
+    public void delete(@PathVariable Long id){
+            studentService.deleteStudent(id);
     }
 
 

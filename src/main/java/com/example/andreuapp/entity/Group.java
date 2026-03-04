@@ -22,7 +22,7 @@ public class Group {
     private String number;
 
 
-    @OneToMany (mappedBy = "group")
+    @OneToMany (mappedBy = "group", orphanRemoval = false)
     private List<Student> students;
 
     public void addStudentsToGroup(Student student) {

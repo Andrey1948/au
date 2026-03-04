@@ -5,8 +5,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <include file="db/changelog/1.0/create-table-groups1.xml"/>
-    <include file="db/changelog/1.0/create-table-students2.xml"/>
-    <include file="db/changelog/1.0/add-constraint-groups3.xml"/>
-    <include file="db/changelog/1.0/change_constraint-students4.xml"/>
+
+    <changeSet id="change_constraint-students4" author="andrey">
+        <dropNotNullConstraint tableName="students"
+                             columnName="group_id"
+                             columnDataType="integer"/>
+    </changeSet>
 </databaseChangeLog>

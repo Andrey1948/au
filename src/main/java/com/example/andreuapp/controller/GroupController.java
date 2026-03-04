@@ -2,7 +2,6 @@ package com.example.andreuapp.controller;
 
 import com.example.andreuapp.dto.GroupEditDto;
 import com.example.andreuapp.dto.GroupReadDto;
-import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.service.GroupService;
 import com.example.andreuapp.service.StudentService;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +20,8 @@ public class GroupController {
         this.studentService = studentService;
     }
 
-    @GetMapping("all")
-    public List<Group> getAllGroups (){
+    @GetMapping()
+    public List<GroupReadDto> getAllGroups() {
         return groupService.getAllGroups();
     }
 
@@ -38,15 +37,12 @@ public class GroupController {
     }
 
     @GetMapping("/{id}/delete")
-    public boolean delete (@PathVariable  Integer id) {
-        if (!(id == null)) {
-            groupService.delete(id);
-            return true;
-        }
-        return false;
+    public boolean delete (@PathVariable Integer id) {
+       return groupService.delete(id);
     }
+
 //    @PostMapping("/io")
-//    public GroupEditDto ter(@RequestBody(required = false) GroupEditDto groupEditDTO) {
+//    public GroupEditDto test(@RequestBody(required = false) GroupEditDto groupEditDTO) {
 //        return new GroupEditDto();
 //    }
 }

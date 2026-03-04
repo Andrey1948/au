@@ -32,10 +32,15 @@ public class StudentService {
         this.studentReadDtoMapper = studentReadDtoMapper;
     }
 
+    public Optional<Student> findById(Long along) {
+        return studentRepository.findById(along);
+    }
+
     public List<Student> getStudents() {
         System.out.println(studentRepository.findAll());
         return studentRepository.findAll();
     }
+
 
     public Optional<Student> getStudentById(Long id) {
         return studentRepository.findById(id);
@@ -46,7 +51,17 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-//    @Transactional
+
+    @Transactional
+    public StudentReadDto updateStudentGroup(StudentUpdateGroupDto sugd) {
+        Student student = studentRepository.findById(sugd.id()).orElseThrow();
+        Group group = groupRepository.findByNumber(sugd.number()).orElseThrow();
+        student.setGroup(group);
+        group.addStudentsToGroup(student);
+        studentRepository.save(student);
+        return studentReadDtoMapper.toDto(student);
+    }
+
 //    public void updateStudentGroup(Long id, String number) {
 //        Student student = studentRepository.findById(id).orElseThrow(NullPointerException::new);
 //        Group group = (Group) groupRepository.findByNumber(number).orElseThrow(NullPointerException::new);
@@ -55,18 +70,13 @@ public class StudentService {
 //    }
 
     @Transactional
-    public StudentReadDto updateStudentGroup(StudentUpdateGroupDto sed) {
-        Student student = studentRepository.findById(sed.id()).orElseThrow();
-        Group group = groupRepository.findByNumber(sed.number()).orElseThrow();
-        student.setGroup(group);
-        return studentReadDtoMapper.toStudent(student);
-    }
-
-    @Transactional
     public List<GroupCountDto> countStudentByGroupName() {
         return studentRepository.countStudentByGroupName();
     }
 
-}
-
+    @Transactional
+    public void deleteStudent(Long id) {
+        studentRepository.deleteById(id);
+        }
+    }
 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class StudentReadDtoMapper {
 
 
-    public StudentReadDto toStudent(Student student) {
+    public StudentReadDto toDto(Student student) {
         if (student == null){return null;}
         StudentReadDto stdto = new StudentReadDto(
                 student.getId(),student.getFullName(),student.getDateOfEnrollment()

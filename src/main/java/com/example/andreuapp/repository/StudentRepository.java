@@ -15,7 +15,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     Optional<Student> findByFullName(String fullName);
 
-
+    @Override
+    Optional<Student> findById(Long aLong);
 
     @Query("SELECT g.number as groupNum, COUNT(s) as studentsCount " +
             "FROM Group g full JOIN g.students s GROUP BY g.number")
