@@ -34,7 +34,6 @@ public class Group {
     }
 
 
-
     public Integer getId() {
         return id;
     }

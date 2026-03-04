@@ -31,15 +31,15 @@ public class AndreuappApplication {
 //        };
 //    }
 
-    @Bean
-    public CommandLineRunner testQuery4(StudentService studentService, GroupRepository groupRepository) {
-        return args -> {
-            Long studentId = 2L;
-            String groupNumber = "20-01";
-            StudentUpdateGroupDto sugdto = new StudentUpdateGroupDto(studentId,groupNumber);
-            studentService.updateStudentGroup(sugdto);
-
-        };
-    }
+//    @Bean
+//    public CommandLineRunner testQuery4(StudentService studentService, GroupRepository groupRepository) {
+//        return args -> {
+//            Long studentId = 2L;
+//            String groupNumber = "20-01";
+//            StudentUpdateGroupDto sugdto = new StudentUpdateGroupDto(studentId,groupNumber);
+//            studentService.updateStudentGroup(sugdto);
+//
+//        };
+//    }
 
     }

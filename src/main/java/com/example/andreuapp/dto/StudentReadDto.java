@@ -1,6 +1,7 @@
 package com.example.andreuapp.dto;
 
 
+import com.example.andreuapp.entity.Group;
 import lombok.Builder;
 
 import java.time.LocalDate;

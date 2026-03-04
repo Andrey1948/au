@@ -1,5 +1,6 @@
 package com.example.andreuapp.controller;
 
+import com.example.andreuapp.dto.GroupEditDto;
 import com.example.andreuapp.dto.GroupReadDto;
 import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.service.GroupService;
@@ -25,11 +26,19 @@ public class GroupController {
     }
 
     @PostMapping()
-    public Group save(@RequestBody Group group) {
-        groupService.save(group);
-        return group;
+    public GroupReadDto save(@RequestBody GroupEditDto groupEditDto) {
+        groupService.save(groupEditDto);
+        return groupEditDto;
     }
 
+    @GetMapping("/{id}/delete")
+    public boolean delete (@PathVariable  Integer id) {
+        if (!(id == null)) {
+            groupService.delete(id);
+            return true;
+        }
+        return false;
+    }
 //    @PostMapping("/io")
 //    public GroupEditDto ter(@RequestBody(required = false) GroupEditDto groupEditDTO) {
 //        return new GroupEditDto();
