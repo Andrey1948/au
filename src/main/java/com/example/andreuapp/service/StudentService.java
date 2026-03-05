@@ -58,7 +58,6 @@ public class StudentService {
         Group group = groupRepository.findByNumber(sugd.number()).orElseThrow();
         student.setGroup(group);
         group.addStudentsToGroup(student);
-        studentRepository.save(student);
         return studentReadDtoMapper.toDto(student);
     }
 

@@ -7,6 +7,7 @@ import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.entity.Student;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -18,11 +19,14 @@ public class GroupReadDtoMapper {
         if (group == null) {
             return null;
         }
-        List<StudentReadDto> studentDto = group.getStudents().stream()
+        if (group.getStudents() != null){
+            List<StudentReadDto> studentDto = group.getStudents().stream()
                 .map(s -> new StudentReadDto(s.getId(), s.getFullName(), s.getDateOfEnrollment()))
                 .toList();
+            return new GroupReadDto(
+                    group.getId(), group.getNumber(), studentDto);}
         return new GroupReadDto(
-                group.getId(), group.getNumber(), studentDto);
+                group.getId(), group.getNumber(), new ArrayList<StudentReadDto>());
     }
 
     public Group toGroup(GroupReadDto dto) {

@@ -12,7 +12,6 @@ public class GroupEditDtoMapper {
     public Group toGroup(GroupEditDto groupEditDTO) {
         if(groupEditDTO == null) return null;
         Group group = new Group();
-        group.setId(groupEditDTO.getId());
         group.setNumber(groupEditDTO.getNumber());
         return group;
     }
@@ -20,7 +19,6 @@ public class GroupEditDtoMapper {
     public GroupEditDto toGroupEditDTO(Group group) {
         if(group == null) return null;
         GroupEditDto groupEditDTO = new GroupEditDto();
-        groupEditDTO.setId(group.getId());
         groupEditDTO.setNumber(group.getNumber());
         return groupEditDTO;
     }
