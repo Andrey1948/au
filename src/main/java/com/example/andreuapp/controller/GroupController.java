@@ -7,6 +7,7 @@ import com.example.andreuapp.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/groups")
@@ -19,12 +20,12 @@ public class GroupController {
     }
 
     @GetMapping()
-    public List<GroupReadDto> getAllGroups() {
+    public List<GroupReadDto> findAllGroups() {
         return groupService.findAll();
     }
 
     @GetMapping("/{id}")
-    public GroupReadDto findGroupById(@PathVariable Integer id) {
+    public Optional<GroupReadDto> findGroupById(@PathVariable Integer id) {
         return groupService.findById(id);
 
     }
