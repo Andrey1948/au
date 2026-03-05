@@ -4,7 +4,6 @@ import com.example.andreuapp.dto.GroupEditDto;
 import com.example.andreuapp.dto.GroupReadDto;
 import com.example.andreuapp.entity.Group;
 
-import com.example.andreuapp.entity.Student;
 import com.example.andreuapp.mapper.GroupEditDtoMapper;
 import com.example.andreuapp.mapper.GroupReadDtoMapper;
 import com.example.andreuapp.repository.GroupRepository;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 @Service
 public class GroupService {
@@ -27,12 +25,12 @@ public class GroupService {
         this.groupEditDtoMapper = groupEditDtoMapper;
     }
 
-    public List<GroupReadDto> getAllGroups() {
+    public List<GroupReadDto> findAll() {
         return groupRepository.findAll().stream().map(s -> groupReadDtoMapper.toDto(s))
                 .toList();
     }
 
-    public GroupReadDto getGroupById(Integer id) {
+    public GroupReadDto findById(Integer id) {
         return groupRepository.findById(id).map(u -> groupReadDtoMapper.toDto(u)).orElseThrow();
     }
 

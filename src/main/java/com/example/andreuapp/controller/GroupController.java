@@ -9,25 +9,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v2/groups")
+@RequestMapping("/v1/groups")
 public class GroupController {
 
     private final GroupService groupService;
-    private final StudentService studentService;
 
     public GroupController(GroupService groupService, StudentService studentService) {
         this.groupService = groupService;
-        this.studentService = studentService;
     }
 
     @GetMapping()
     public List<GroupReadDto> getAllGroups() {
-        return groupService.getAllGroups();
+        return groupService.findAll();
     }
 
     @GetMapping("/{id}")
     public GroupReadDto findGroupById(@PathVariable Integer id) {
-        return groupService.getGroupById(id);
+        return groupService.findById(id);
 
     }
 

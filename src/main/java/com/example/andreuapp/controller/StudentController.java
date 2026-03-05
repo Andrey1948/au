@@ -4,21 +4,18 @@ package com.example.andreuapp.controller;
 import com.example.andreuapp.dto.GroupCountDto;
 import com.example.andreuapp.dto.StudentReadDto;
 import com.example.andreuapp.dto.StudentUpdateGroupDto;
-import com.example.andreuapp.service.GroupService;
 import com.example.andreuapp.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/v2/students")
+@RequestMapping("/v1/students")
 public class StudentController {
 
-    private final GroupService groupService;
     private final StudentService studentService;
 
-    public StudentController(GroupService groupService, StudentService studentService) {
-        this.groupService = groupService;
+    public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
