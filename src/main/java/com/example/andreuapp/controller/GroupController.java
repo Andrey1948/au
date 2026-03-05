@@ -25,19 +25,19 @@ public class GroupController {
         return groupService.getAllGroups();
     }
 
-    @GetMapping("{id}")
-    public GroupReadDto getGroupById(@PathVariable Integer id) {
+    @GetMapping("/{id}")
+    public GroupReadDto findGroupById(@PathVariable Integer id) {
         return groupService.getGroupById(id);
 
     }
 
     @PostMapping()
-    public GroupReadDto save(@RequestBody GroupEditDto groupEditDto) {
+    public GroupReadDto createOrUpdateGroup(@RequestBody GroupEditDto groupEditDto) {
         return groupService.save(groupEditDto);
     }
 
-    @GetMapping("/{id}/delete")
-    public boolean delete (@PathVariable Integer id) {
+    @DeleteMapping("/{id}")
+    public boolean deleteGroup (@PathVariable Integer id) {
        return groupService.delete(id);
     }
 

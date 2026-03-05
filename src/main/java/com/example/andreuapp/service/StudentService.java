@@ -74,8 +74,10 @@ public class StudentService {
     }
 
     @Transactional
-    public void deleteStudent(Long id) {
-        studentRepository.deleteById(id);
+    public boolean deleteStudent(Long id) {
+        studentRepository.findById(id).map(s->{studentRepository.delete(s);
+          return true;});
+        return false;
         }
     }
 

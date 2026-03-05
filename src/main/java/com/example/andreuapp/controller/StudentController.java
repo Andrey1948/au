@@ -22,17 +22,17 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/quantity")
-    List<GroupCountDto> countStudentByGroupName() {
+    @GetMapping()
+    List<GroupCountDto> findAllQuantity() {
        return studentService.countStudentByGroupName();
     }
 
     @PostMapping
-    public StudentReadDto updateGroupStudent(@RequestBody StudentUpdateGroupDto studentUpdateGroupDto) {
+    public StudentReadDto AddOrUpdatetoGroupStudent(@RequestBody StudentUpdateGroupDto studentUpdateGroupDto) {
         return studentService.updateStudentGroup(studentUpdateGroupDto);
     }
 
-    @GetMapping("/{id}/delete")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
             studentService.deleteStudent(id);
     }
