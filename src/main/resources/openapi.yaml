@@ -1,0 +1,16 @@
+openapi: 3.0.1
+info:
+  title: Andreuapp
+  version: v0
+  contact:
+    email: a@a.ru
+    name: John Doe
+servers:
+  - url: 'http://localhost:8080'
+    description: localhost
+paths:
+  /v1/groups:
+    get:
+      summary: Метод отображения всех групп
+      tags:
+           
