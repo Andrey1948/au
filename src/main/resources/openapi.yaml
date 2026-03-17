@@ -22,12 +22,29 @@ paths:
             application/json:
 components:
   schemas:
+
     GroupReadDto:
       type: object
       properties:
         id:
           type: integer
           format: int32
+        number:
+          type: string
+        students:
+          type: array
+          items:
+            $ref: '#/components/schemas/StudentReadDto'
 
-
+    StudentReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        fullName:
+          type: string
+        dateOfEnrollment:
+          type: string
+          format: date
 
