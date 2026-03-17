@@ -13,4 +13,21 @@ paths:
     get:
       summary: Метод отображения всех групп
       tags:
+        - Groups
+      operationId: findAllGroups
+      responses:
+        '200':
+          description: Успешный ответ со списком групп
+          content:
+            application/json:
+components:
+  schemas:
+    GroupReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+
+
 
