@@ -47,4 +47,13 @@ components:
         dateOfEnrollment:
           type: string
           format: date
+      StudentUpdateGroupDto:
+        type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          number:
+            type: string
+
 
