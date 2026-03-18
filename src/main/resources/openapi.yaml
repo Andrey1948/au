@@ -56,4 +56,16 @@ components:
           number:
             type: string
 
+        GroupCountDto:
+          type: object
+          properties:
+            groupNum:
+              type: string
+            studentsCount:
+              type: integer
+              format: int64
+          required:
+            - groupNum
+            - studentsCount
+
 
