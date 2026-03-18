@@ -6,7 +6,7 @@ info:
     email: a@a.ru
     name: John Doe
 servers:
-  - url: 'http://localhost:8080'
+  - url: 'http://localhost:8080/'
     description: localhost
 paths:
   /v1/groups:
@@ -17,7 +17,7 @@ paths:
       operationId: findAllGroups
       responses:
         '200':
-          description: Успешный ответ со списком групп
+          description: Успешный ответ
           content:
             application/json:
               schema:
@@ -30,6 +30,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    post:
+      summary: Создание или апдейт группы
+      tags:
+        - Groups
+      operationId: createOrUpdateGroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupReadDto'
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupReadDto'
+        'default':
+          description: Неверный запрос
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
 
   /v1/groups/{id}:
     get:
@@ -45,6 +70,7 @@ paths:
           schema:
             type: integer
             format: int32
+          example: 2
       responses:
         '200':
           description: Успешный ответ
@@ -120,3 +146,11 @@ components:
       required:
         - code
         - message
+
+
+
+
+
+
+
+
