@@ -136,7 +136,7 @@ paths:
     post:
       summary: Апдейт группы у студента
       tags:
-        - Groups
+        - Students
       operationId: AddOrUpdatetoGroupStudent
       requestBody:
         required: true
@@ -151,6 +151,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GroupReadDto'
+        'default':
+          description: Неверный запрос
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/students/{id}:
+    delete:
+      summary: Удаление студента по id
+      tags:
+        - Students
+      operationId: delete
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id студента
+          schema:
+            type: integer
+            format: int64
+          example: 2
+      responses:
+        '200':
+          description: Успешный ответ
         'default':
           description: Неверный запрос
           content:
