@@ -84,7 +84,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
+    delete:
+      summary: Удаление группы по id
+      tags:
+        - Groups
+      operationId: deleteGroup
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id группы
+          schema:
+            type: integer
+            format: int32
+          example: 2
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: boolean
+        'default':
+          description: Неверный запрос
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
 components:
   schemas:
@@ -156,11 +182,3 @@ components:
       required:
         - code
         - message
-
-
-
-
-
-
-
-
