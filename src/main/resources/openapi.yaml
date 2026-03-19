@@ -112,6 +112,53 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /v1/students:
+    get:
+      summary: Метод отображения количества студентов по группам
+      tags:
+        - Students
+      operationId: findAllQuantity
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupCountDto'
+        'default':
+          description: Неверный запрос
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Апдейт группы у студента
+      tags:
+        - Groups
+      operationId: AddOrUpdatetoGroupStudent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentUpdateGroupDto'
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupReadDto'
+        'default':
+          description: Неверный запрос
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
 components:
   schemas:
     GroupReadDto:
