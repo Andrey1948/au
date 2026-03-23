@@ -36,3 +36,24 @@ public class StudentController {
 
 
 }
+
+//private final StudentService studentService;
+//
+//public StudentController(StudentService studentService) {
+//    this.studentService = studentService;
+//}
+//
+//@GetMapping()
+//List<GroupCountDto> findAllQuantity() {
+//    return studentService.countStudentByGroupName();
+//}
+//
+//@PostMapping
+//public StudentReadDto AddOrUpdatetoGroupStudent(@RequestBody StudentUpdateGroupDto studentUpdateGroupDto) {
+//    return studentService.updateStudentGroup(studentUpdateGroupDto);
+//}
+//
+//@DeleteMapping("/{id}")
+//public void delete(@PathVariable Long id){
+//    studentService.deleteStudent(id);
+//}

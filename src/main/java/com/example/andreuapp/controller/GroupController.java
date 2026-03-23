@@ -1,7 +1,8 @@
 package com.example.andreuapp.controller;
 
-//import com.example.andreuapp.dto.GroupEditDto;
+import com.example.andreuapp.dto.GroupEditDto;
 
+import com.example.andreuapp.mapper.GroupMapper;
 import com.example.andreuapp.service.GroupService;
 import com.example.andreuapp.service.StudentService;
 import org.openapitools.api.V1Api;
@@ -9,40 +10,51 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.openapitools.model.GroupReadDto;
 
+
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 //@RequestMapping("/v1/groups")
 public class GroupController implements V1Api {
 
     private final GroupService groupService;
+    private final GroupMapper groupMapper;
 
-    public GroupController(GroupService groupService, StudentService studentService) {
+
+    public GroupController(GroupService groupService, StudentService studentService, GroupMapper groupMapper) {
         this.groupService = groupService;
+        this.groupMapper = groupMapper;
     }
 
     @Override
     public ResponseEntity<List<org.openapitools.model.GroupReadDto>> findAllGroups() {
-        return ResponseEntity.ok(groupService.findAll());
+
+        return ResponseEntity.ok(groupService.findAll().stream().map(s -> groupMapper.toApi(s))
+                .toList());
     }
 
-//    @GetMapping("/{id}")
-//    public Optional<GroupReadDto> findGroupById(@PathVariable Integer id) {
-//        return groupService.findById(id);
-//
-//    }
-//
-//    @PostMapping()
-//    public GroupReadDto createOrUpdateGroup(@RequestBody GroupEditDto groupEditDto) {
-//        return groupService.save(groupEditDto);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public boolean deleteGroup (@PathVariable Integer id) {
-//        return groupService.delete(id);
-//    }
 
+    @Override
+    public ResponseEntity<org.openapitools.model.GroupReadDto> findGroupById(@PathVariable Integer id) {
+        return groupService.findById(id).map(m -> groupMapper.toApi(m))
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+
+
+    }
+
+    @Override
+    public ResponseEntity<org.openapitools.model.GroupReadDto> createOrUpdateGroup(@RequestBody org.openapitools.model.GroupEditDto groupEditDto) {
+        return ResponseEntity.ok(
+                groupMapper.toApi(
+                        groupService.save(
+                                groupMapper.toGroupEditFromApi(groupEditDto))));
+    }
+
+    @Override
+    public ResponseEntity<Boolean> deleteGroup(@PathVariable Integer id) {
+        return ResponseEntity.ok(groupService.delete(id));
+    }
 
 
 //    @GetMapping()
