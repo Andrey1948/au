@@ -28,7 +28,6 @@ public class GroupController implements V1Api {
 
     @Override
     public ResponseEntity<List<org.openapitools.model.GroupReadDto>> findAllGroups() {
-
         return ResponseEntity.ok(groupService.findAll().stream().map(s -> groupMapper.toApi(s))
                 .toList());
     }

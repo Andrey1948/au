@@ -19,4 +19,12 @@ public interface GroupMapper {
             org.openapitools.model.GroupEditDto dto
     );
 
+    org.openapitools.model.GroupCountDto toApiFromCount(
+            com.example.andreuapp.dto.GroupCountDto dto
+    );
+    com.example.andreuapp.dto.GroupCountDto toGroupCountFromApi(
+            org.openapitools.model.GroupCountDto dto
+    );
+
+
 }
