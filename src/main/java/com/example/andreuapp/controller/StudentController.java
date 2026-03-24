@@ -45,9 +45,11 @@ public class StudentController implements StudentsApi {
     }
 
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        studentService.deleteStudent(id);
+//    @DeleteMapping("/{id}")
+    @Override
+    public ResponseEntity<Boolean> delete(Long id) {
+       return ResponseEntity.ok(studentService.deleteStudent(id));
+
     }
 
 
