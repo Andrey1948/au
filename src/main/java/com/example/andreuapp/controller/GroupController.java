@@ -5,7 +5,8 @@ import com.example.andreuapp.dto.GroupEditDto;
 import com.example.andreuapp.mapper.GroupMapper;
 import com.example.andreuapp.service.GroupService;
 import com.example.andreuapp.service.StudentService;
-import org.openapitools.api.V1Api;
+
+import org.openapitools.api.GroupsApi;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.openapitools.model.GroupReadDto;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @RestController
 //@RequestMapping("/v1/groups")
-public class GroupController implements V1Api {
+public class GroupController implements GroupsApi {
 
     private final GroupService groupService;
     private final GroupMapper groupMapper;
