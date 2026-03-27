@@ -36,10 +36,7 @@ public class GroupController implements GroupsApi {
 
     @Override
     public ResponseEntity<org.openapitools.model.GroupReadDto> findGroupById(@PathVariable Integer id) {
-        return groupService.findById(id).map(m -> groupMapper.toApi(m))
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-
+        return  ResponseEntity.ok(groupMapper.toApi(groupService.findById(id)));
 
     }
 

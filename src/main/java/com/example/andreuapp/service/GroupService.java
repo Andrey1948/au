@@ -31,8 +31,9 @@ public class GroupService {
                 .toList();
     }
 
-    public Optional<GroupReadDto> findById(Integer id) {
-        return groupRepository.findById(id).map(u -> groupReadDtoMapper.toDto(u));
+    public GroupReadDto findById(Integer id) {
+        return groupRepository.findById(id).map(u -> groupReadDtoMapper.toDto(u))
+                .orElseThrow(()->new MyException("not found"));
     }
 
     @Transactional
