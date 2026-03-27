@@ -13,7 +13,7 @@ public class RestExceptionHandler {
     @ExceptionHandler(MyException.class)
     public ResponseEntity<ErrorDto> MyExсeptionHandler(MyException ex) {
         return ResponseEntity.status(404)
-                .body(new ErrorDto(ex.getMessage(), 500));
+                .body(new ErrorDto("problem", 404));
     }
 
 }

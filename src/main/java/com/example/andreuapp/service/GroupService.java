@@ -33,7 +33,7 @@ public class GroupService {
 
     public GroupReadDto findById(Integer id) {
         return groupRepository.findById(id).map(u -> groupReadDtoMapper.toDto(u))
-                .orElseThrow(()->new MyException("not found"));
+                .orElseThrow(()->new MyException("id "+id+" not found"));
     }
 
     @Transactional
