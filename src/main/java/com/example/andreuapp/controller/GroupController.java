@@ -49,8 +49,9 @@ public class GroupController implements GroupsApi {
     }
 
     @Override
-    public ResponseEntity<Boolean> deleteGroup(@PathVariable Integer id) {
-        return ResponseEntity.ok(groupService.delete(id));
+    public ResponseEntity<Void> deleteGroup(@PathVariable Integer id) {
+       groupService.delete(id);
+       return ResponseEntity.noContent().build();
     }
 
 

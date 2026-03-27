@@ -101,10 +101,6 @@ paths:
       responses:
         '200':
           description: Успешный ответ
-          content:
-            application/json:
-              schema:
-                type: boolean
         'default':
           description: Неверный запрос
           content:
@@ -175,10 +171,6 @@ paths:
       responses:
         '200':
           description: Успешный ответ
-          content:
-            application/json:
-              schema:
-                type: boolean
         'default':
           description: Неверный запрос
           content:

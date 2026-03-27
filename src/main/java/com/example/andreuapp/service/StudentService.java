@@ -40,8 +40,9 @@ public class StudentService {
 
     @Transactional
     public StudentReadDto updateStudentGroup(StudentUpdateGroupDto updateDto) {
-        Student student = studentRepository.findById(updateDto.id()).orElseThrow();
-        Group group = groupRepository.findByNumber(updateDto.number()).orElseThrow();
+        Student student = studentRepository.findById(updateDto.id()).
+                orElseThrow(() -> new MyException("not found student"));
+        Group group = groupRepository.findByNumber(updateDto.number()).orElseThrow(() -> new MyException("not found group"));
         group.addStudentToGroup(student);
         return studentReadDtoMapper.toDto(student);
     }
@@ -51,11 +52,10 @@ public class StudentService {
     }
 
     @Transactional
-    public boolean deleteStudent(Long id) {
-        return studentRepository.findById(id).map(s -> {
-            studentRepository.delete(s);
-            return true;
-        }).orElse(false);
+    public void deleteStudent(Long id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new MyException("Student "+id +" not found"));
+        studentRepository.delete(student);
     }
 }
 

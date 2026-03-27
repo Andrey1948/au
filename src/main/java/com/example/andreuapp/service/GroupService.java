@@ -45,13 +45,11 @@ public class GroupService {
 
 
     @Transactional
-    public boolean delete(Integer id) {
-        return groupRepository.findById(id).map(g -> {
-                    g.getStudents().
-                            forEach(student -> student.setGroup(null));
-                    groupRepository.delete(g);
-                    return true;
-                }).orElse(false);
+    public void delete(Integer id) {
+        Group group = groupRepository.findById(id)
+                .orElseThrow(() -> new MyException("id " + id + " not found"));
+        group.getStudents().forEach(student -> student.setGroup(null));
+        groupRepository.delete(group);
     }
 }
 
