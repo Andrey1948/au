@@ -14,9 +14,10 @@ public class ErrorDto {
     private int status;
     private LocalDateTime timestamp;
 
-    public ErrorDto(String message, int status) {
+    public ErrorDto(String message, int status,LocalDateTime timestamp ) {
         this.message = message;
         this.status = status;
+        this.timestamp=timestamp;
     }
 
     public String getMessage() {

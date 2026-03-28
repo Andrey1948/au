@@ -45,7 +45,7 @@ public class StudentController implements StudentsApi {
     }
 
 
-    @DeleteMapping("/{id}")
+//   @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<Void> delete(Long id) {
        studentService.deleteStudent(id);
