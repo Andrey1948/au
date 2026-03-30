@@ -7,6 +7,7 @@ import com.example.andreuapp.entity.Group;
 import com.example.andreuapp.mapper.GroupEditDtoMapper;
 import com.example.andreuapp.mapper.GroupReadDtoMapper;
 import com.example.andreuapp.repository.GroupRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class GroupService {
 
     private final GroupRepository groupRepository;
@@ -27,13 +29,20 @@ public class GroupService {
     }
 
     public List<GroupReadDto> findAll() {
+        log.info("Find all Group, return List GRD");
         return groupRepository.findAll().stream().map(s -> groupReadDtoMapper.toDto(s))
                 .toList();
+
     }
 
     public GroupReadDto findById(Integer id) {
-        return groupRepository.findById(id).map(u -> groupReadDtoMapper.toDto(u))
-                .orElseThrow(()->new MyException("id "+id+" not found"));
+        log.info("find by id method start");
+        return groupRepository.findById(id).map(u -> {
+                    log.info("Group found successfully {} with", id);
+                    return groupReadDtoMapper.toDto(u);
+                })
+                .orElseThrow(() -> new MyException("id " + id + " not found"));
+
     }
 
     @Transactional
@@ -46,6 +55,7 @@ public class GroupService {
 
     @Transactional
     public void delete(Integer id) {
+
         Group group = groupRepository.findById(id)
                 .orElseThrow(() -> new MyException("id " + id + " not found"));
         group.getStudents().forEach(student -> student.setGroup(null));
